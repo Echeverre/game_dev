@@ -6,12 +6,15 @@ Play.prototype = {
 		// Add background as tileSprite
 		game.background = this.add.tileSprite(0,0, game.width, game.height, 'background');
 
+		score = 0;
+		enemySpeed = -200;
+
 		// Set up world physics
 		game.physics.startSystem(Phaser.Physics.ARCADE);
-		game.physics.arcade.gravity.y = 2600;
+		//game.physics.arcade.gravity.y = 2600;
 		
 		// Add audio
-		this.tink = game.add.audio('tink');
+		//this.tink = game.add.audio('tink');
 		this.thump = game.add.audio('thump');
 
 		// Add player
@@ -21,15 +24,20 @@ Play.prototype = {
 
 		// Player physics
 		game.physics.enable(this.player, Phaser.Physics.ARCADE);
-		this.player.body.maxVelocity.set(400);
+		this.player.body.maxVelocity.set(1500);
 		this.player.body.drag.set(500);
 		this.player.body.collideWorldBounds = true;
+		this.player.body.gravity.y = 2600;
 		//this.player.body.immovable = true;
 
 		// Set up player animations
 		this.player.animations.add('walk', [0, 1, 2], 10, true);
 		this.player.animations.add('sprint', [0, 1, 2], 20, true);
 		this.player.animations.add('slow', [0, 1, 2], 5, true);
+
+		// Set up enemy group
+		this.enemyGroup = game.add.group()
+		this.addEnemy(this.enemyGroup);
 
 		// Set up ground
 		this.ground = game.add.group();
@@ -40,13 +48,27 @@ Play.prototype = {
 			groundTile.body.allowGravity = false;
 			this.ground.add(groundTile);
 		}
+
+		// Create our timer
+		//timer = game.time.create(false);
+
+		// Set a TimerEvent to occur every 2 seconds
+		//timer.loop(2000, addEnemy, this);
+
+		// Start the timer
+		//timer.start();
 	},
 	update: function(){
+		score++;
+		
 		// Check collisions
 		this.game.physics.arcade.collide(this.player, this.ground);
 
 		// Update tileSprite background
 		game.background.tilePosition.x -= 4;
+
+		// update groundTile position to acheive parallax (need to figure out a way to destroy them once they go off screen and to spawn them off-screen)
+		//this.ground.x -= 4;
 
 		// Player walk
 		//this.player.animations.play('walk');
@@ -64,6 +86,30 @@ Play.prototype = {
 			this.player.animations.play('walk');
 		}
 
+		if (game.input.keyboard.isDown(Phaser.Keyboard.UP) && this.player.body.touching.down) {
+			this.player.body.velocity.y = -1500;
+		}
 
+		if(!this.player.destroyed) {
+			game.physics.arcade.collide(this.player, this.enemyGroup, this.playerCollision, null, this);
+		}
+	},
+	addEnemy: function(group) {
+		// Construct new enemy object, add it to the game world, and add it to the group
+		var enemy = new Enemy(game, enemySpeed);
+		game.add.existing(enemy);
+		group.add(enemy); 
+		this.tink = game.add.audio('tink');
+		this.tink.play('', 0, 1, false);
+	},
+	playerCollision: function(player, group) {
+		this.player.destroyed = true;
+
+		this.thump.play('', 0, 1, false);
+
+		this.player.kill();
+
+		game.state.start('GameOver');
 	}
+	
 };

@@ -11,7 +11,10 @@
 // Define Global Variables
 var game;
 var player = null;
-var PLAYERVELOCITY = 150;
+var PLAYERVELOCITY = 250;
+var timer;
+var enemySpeed;
+var score;
 //var GRAVITY = 2600;
 
 window.onload = function(){
@@ -24,7 +27,7 @@ window.onload = function(){
 	game.state.add('Load', Load);
 	game.state.add('Title', Title);
 	game.state.add('Play', Play);
-	//game.state.add('GameOver', GameOver);
+	game.state.add('GameOver', GameOver);
 
 	// Start game
 	game.state.start('Boot');
