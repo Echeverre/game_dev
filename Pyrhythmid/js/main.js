@@ -12,6 +12,7 @@
 var game;
 var player = null;
 var PLAYERVELOCITY = 150;
+//var GRAVITY = 2600;
 
 window.onload = function(){
 

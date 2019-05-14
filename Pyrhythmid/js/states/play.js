@@ -49,6 +49,21 @@ Play.prototype = {
 		game.background.tilePosition.x -= 4;
 
 		// Player walk
-		this.player.animations.play('walk');
+		//this.player.animations.play('walk');
+		this.player.body.velocity.x = 0;
+
+		if (game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
+			this.player.body.velocity.x += PLAYERVELOCITY;
+			this.player.animations.play('sprint');
+		}
+		else if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
+			this.player.body.velocity.x -= PLAYERVELOCITY;
+			this.player.animations.play('slow');
+		}
+		else {
+			this.player.animations.play('walk');
+		}
+
+
 	}
 };
