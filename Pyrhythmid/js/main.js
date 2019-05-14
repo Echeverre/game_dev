@@ -1,7 +1,9 @@
-// Pyrhythmid
+// Team Pyrhythmid
 
 // A rhythm based game about a futuristic civilization that was based off of Egypt.
 // Created by Henry Lott, Teresa Chen, and Aidan Hope
+
+// https://github.com/Echeverre/game_dev
 
 // Very early prototype
 // Note to self: remember to update location of assets when upgrading from temp to final assets
