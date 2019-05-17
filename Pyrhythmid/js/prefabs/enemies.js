@@ -21,7 +21,7 @@ Enemy.prototype.constructor = Enemy;
 
 // Override the Phaser.Sprite update function
 Enemy.prototype.update = function() {
-	if(this.newEnemy && this.x < game.width/1.6) {
+	if(this.newEnemy && this.x < game.width/1.8) {
 		this.newEnemy = false;
 		Play.prototype.addEnemy(this.parent);
 		//this.tink.play('', 0, 1, false);

@@ -33,6 +33,10 @@ Load.prototype = {
 		game.load.path = 'temp_assets/temp_audio/';
 		game.load.audio('tink', 'tink.mp3');
 		game.load.audio('thump', 'thump.mp3');
+
+		// Load final audio assets
+		game.load.path = 'assets/audio/';
+		game.load.audio('pew', 'pew1.wav');
 	},
 	create: function() {
 		// Go to Title state
