@@ -4,7 +4,12 @@ var Play = function(game) {};
 Play.prototype = {
 	create: function() {
 		// Add background as tileSprite
-		game.background = this.add.tileSprite(0,0, game.width, game.height, 'background');
+		//game.background = this.add.tileSprite(0,0, game.width, game.height, 'background');
+
+		game.bg4 = this.add.tileSprite(0, 0, game.width +200, game.height, 'bg4');
+		game.bg3 = this.add.tileSprite(0, 0, this.game.cache.getImage('bg3').width, game.height, 'bg3');
+		game.bg2 = this.add.tileSprite(0, 0, this.game.cache.getImage('bg2').width, game.height, 'bg2');
+		game.bg1 = this.add.tileSprite(0, 0, this.game.cache.getImage('bg1').width, game.height, 'bg1');
 
 		score = 0;
 		enemySpeed = -200;
@@ -41,8 +46,8 @@ Play.prototype = {
 
 		// Set up ground
 		this.ground = game.add.group();
-		for(let i = 0; i < game.width; i += 64) {
-			var groundTile = game.add.sprite(i, game.height - 64, 'sandtile');
+		for(let i = 0; i < game.width; i += 16) {
+			var groundTile = game.add.sprite(i, game.height - 16, 'sandtile');
 			game.physics.enable(groundTile, Phaser.Physics.ARCADE);
 			groundTile.body.immovable = true;
 			groundTile.body.allowGravity = false;
@@ -65,7 +70,10 @@ Play.prototype = {
 		this.game.physics.arcade.collide(this.player, this.ground);
 
 		// Update tileSprite background
-		game.background.tilePosition.x -= 4;
+		//game.background.tilePosition.x -= 4;
+		game.bg3.tilePosition.x -= 0.5;
+		game.bg2.tilePosition.x -= 1;
+		game.bg1.tilePosition.x -= 2;
 
 		// update groundTile position to acheive parallax (need to figure out a way to destroy them once they go off screen and to spawn them off-screen)
 		//this.ground.x -= 4;

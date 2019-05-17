@@ -22,7 +22,7 @@ var score;
 window.onload = function(){
 
 	// Define game
-	game = new Phaser.Game(900,600, Phaser.AUTO, 'phaser');
+	game = new Phaser.Game(1600,800, Phaser.AUTO, 'phaser');
 
 	// Define States (must add any new states to both here and to index.html)
 	game.state.add('Boot', Boot);
