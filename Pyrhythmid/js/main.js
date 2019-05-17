@@ -30,6 +30,7 @@ window.onload = function(){
 	game.state.add('Title', Title);
 	game.state.add('Play', Play);
 	game.state.add('GameOver', GameOver);
+	game.state.add('Victory', Victory);
 
 	// Start game
 	game.state.start('Boot');

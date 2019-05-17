@@ -62,11 +62,12 @@ Play.prototype = {
 		// Create our timer
 		//timer = game.time.create(false);
 
-		// Set a TimerEvent to occur every 2 seconds
-		//timer.loop(2000, addEnemy, this);
+		// Set a TimerEvent to occur every 1 seconds
+		//game.time.events.loop(1000, Play.updateScore, this);
 
 		// Start the timer
 		//timer.start();
+
 		// Add enemysprite
 		this.enemy = game.add.sprite(game.width-128, game.height-64,'enemy_atlas', 'Mob_Snake_F1');
 		this.enemy.anchor.set(0.5);
@@ -115,7 +116,11 @@ Play.prototype = {
 			game.physics.arcade.collide(this.player, this.enemyGroup, this.playerCollision, null, this);
 		}
 
-		
+		if(score >= 3000) {
+			game.state.start('Victory');
+		}
+
+
 	},
 	addEnemy: function(group) {
 		// Construct new enemy object, add it to the game world, and add it to the group
@@ -136,5 +141,8 @@ Play.prototype = {
 
 		game.state.start('GameOver');
 	}
+	//updateScore: function(){
+		//score++;
+	//}
 	
 };
