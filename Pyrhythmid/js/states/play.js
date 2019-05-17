@@ -116,7 +116,7 @@ Play.prototype = {
 			game.physics.arcade.collide(this.player, this.enemyGroup, this.playerCollision, null, this);
 		}
 
-		if(score >= 3000) {
+		if(score >= 2000) {
 			game.state.start('Victory');
 		}
 
