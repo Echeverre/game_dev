@@ -4,7 +4,7 @@
 var Enemy = function(game, speed){
 	// Call Sprite constructor within this object
 	// new Sprite(game, x, y, key, frame)
-	Phaser.Sprite.call(this, game, game.width + 64,game.height-128, 'enemy');
+	Phaser.Sprite.call(this, game, game.width + 64,game.height-64, 'enemy');
 	game.physics.enable(this, Phaser.Physics.ARCADE);
 	this.anchor.set(0.5);
 	this.body.immovable = true;

@@ -12,7 +12,7 @@ Play.prototype = {
 		game.bg1 = this.add.tileSprite(0, 0, this.game.cache.getImage('bg1').width, game.height, 'bg1');
 
 		score = 0;
-		enemySpeed = -200;
+		enemySpeed = -600;
 
 		// Set up world physics
 		game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -23,7 +23,7 @@ Play.prototype = {
 		this.thump = game.add.audio('thump');
 
 		// Add player
-		this.player = game.add.sprite(32, game.height/2, 'atlas', 'idle');
+		this.player = game.add.sprite(32, game.height/2, 'atlas', 'Player_Sprite_Idle_F1');
 		this.player.anchor.set(0.5);
 		this.player.destroyed = false;
 
@@ -36,9 +36,9 @@ Play.prototype = {
 		//this.player.body.immovable = true;
 
 		// Set up player animations
-		this.player.animations.add('walk', [0, 1, 2], 10, true);
-		this.player.animations.add('sprint', [0, 1, 2], 20, true);
-		this.player.animations.add('slow', [0, 1, 2], 5, true);
+		this.player.animations.add('walk', [0, 1, 2, 3], 9, true);
+		this.player.animations.add('sprint', [0, 1, 2, 3], 10, true);
+		this.player.animations.add('slow', [0, 1, 2, 3], 8, true);
 
 		// Set up enemy group
 		this.enemyGroup = game.add.group()

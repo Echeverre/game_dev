@@ -13,7 +13,7 @@ Load.prototype = {
 		
 		// Load temp graphics assets
 		game.load.path = 'temp_assets/temp_img/';
-		game.load.atlas('atlas', 'kevin_sheet.png', 'kevin_sheet.json');
+		//game.load.atlas('atlas', 'kevin_sheet.png', 'kevin_sheet.json');
 		game.load.image('enemy', 'enemy.png');
 		//game.load.image('sandtile', 'sandtile.png');
 		game.load.image('background', 'background.png');
@@ -25,6 +25,7 @@ Load.prototype = {
 		game.load.image('bg2', 'BG2.png');
 		game.load.image('bg3', 'BG3.png');
 		game.load.image('bg4', 'BG4.png');
+		game.load.atlas('atlas', 'playerspritesheet.png', 'playerspritesheet.json');
 
 		// Load audio assets
 		game.load.path = 'temp_assets/temp_audio/';
