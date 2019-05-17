@@ -114,6 +114,8 @@ Play.prototype = {
 		if(!this.player.destroyed) {
 			game.physics.arcade.collide(this.player, this.enemyGroup, this.playerCollision, null, this);
 		}
+
+		
 	},
 	addEnemy: function(group) {
 		// Construct new enemy object, add it to the game world, and add it to the group
