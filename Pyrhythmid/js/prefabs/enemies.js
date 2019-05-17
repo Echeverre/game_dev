@@ -4,7 +4,7 @@
 var Enemy = function(game, speed){
 	// Call Sprite constructor within this object
 	// new Sprite(game, x, y, key, frame)
-	Phaser.Sprite.call(this, game, game.width + 64,game.height-64, 'enemy');
+	Phaser.Sprite.call(this, game, game.width-128,game.height-64, 'projectile');
 	game.physics.enable(this, Phaser.Physics.ARCADE);
 	this.anchor.set(0.5);
 	this.body.immovable = true;
@@ -21,7 +21,7 @@ Enemy.prototype.constructor = Enemy;
 
 // Override the Phaser.Sprite update function
 Enemy.prototype.update = function() {
-	if(this.newEnemy && this.x < game.width/1.4) {
+	if(this.newEnemy && this.x < game.width/1.6) {
 		this.newEnemy = false;
 		Play.prototype.addEnemy(this.parent);
 		//this.tink.play('', 0, 1, false);

@@ -25,7 +25,9 @@ Load.prototype = {
 		game.load.image('bg2', 'BG2.png');
 		game.load.image('bg3', 'BG3.png');
 		game.load.image('bg4', 'BG4.png');
+		game.load.image('projectile', 'projectile.png');
 		game.load.atlas('atlas', 'playerspritesheet.png', 'playerspritesheet.json');
+		game.load.atlas('enemy_atlas', 'enemy1spritesheet.png', 'enemy1spritesheet.json');
 
 		// Load audio assets
 		game.load.path = 'temp_assets/temp_audio/';

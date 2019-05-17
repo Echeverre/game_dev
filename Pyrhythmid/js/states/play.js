@@ -27,6 +27,10 @@ Play.prototype = {
 		this.player.anchor.set(0.5);
 		this.player.destroyed = false;
 
+		// Add enemysprite
+		this.enemy = game.add.sprite(game.width-128, game.height-64,'enemy_atlas', 'Mob_Snake_F1');
+		this.enemy.anchor.set(0.5);
+
 		// Player physics
 		game.physics.enable(this.player, Phaser.Physics.ARCADE);
 		this.player.body.maxVelocity.set(1500);
@@ -39,6 +43,9 @@ Play.prototype = {
 		this.player.animations.add('walk', [0, 1, 2, 3], 9, true);
 		this.player.animations.add('sprint', [0, 1, 2, 3], 10, true);
 		this.player.animations.add('slow', [0, 1, 2, 3], 8, true);
+
+		// Set up enemy animations
+		this.enemy.animations.add('float', [0,1,2,3], 5, true);
 
 		// Set up enemy group
 		this.enemyGroup = game.add.group()
@@ -81,6 +88,9 @@ Play.prototype = {
 		// Player walk
 		//this.player.animations.play('walk');
 		this.player.body.velocity.x = 0;
+
+		// Enemy float
+		this.enemy.animations.play('float');
 
 		if (game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
 			this.player.body.velocity.x += PLAYERVELOCITY;
