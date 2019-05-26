@@ -6,10 +6,14 @@ Play.prototype = {
 		// Add background as tileSprite
 		//game.background = this.add.tileSprite(0,0, game.width, game.height, 'background');
 
-		game.bg4 = this.add.tileSprite(0, 0, game.width +200, game.height, 'bg4');
-		game.bg3 = this.add.tileSprite(0, 0, this.game.cache.getImage('bg3').width, game.height, 'bg3');
-		game.bg2 = this.add.tileSprite(0, 0, this.game.cache.getImage('bg2').width, game.height, 'bg2');
-		game.bg1 = this.add.tileSprite(0, 0, this.game.cache.getImage('bg1').width, game.height, 'bg1');
+		//game.bg4 = this.add.tileSprite(0, 0, game.width +200, game.height, 'bg4');
+		game.bg4 = this.add.tileSprite(0, 0, game.width + 200, game.height, 'atlas' 'BG4');
+		//game.bg3 = this.add.tileSprite(0, 0, this.game.cache.getImage('bg3').width, game.height, 'bg3');
+		game.bg3 = this.add.tileSprite(0, 0, 3000, game.height, 'atlas', 'BG3');
+		//game.bg2 = this.add.tileSprite(0, 0, this.game.cache.getImage('bg2').width, game.height, 'bg2');
+		game.bg2 = this.add.tileSprite(0, 0, 3000, game.height, 'atlas', 'BG2');
+		//game.bg1 = this.add.tileSprite(0, 0, this.game.cache.getImage('bg1').width, game.height, 'bg1');
+		game.bg1 = this.add.tileSprite(0, 0, 3000, game.height, 'atlas', 'BG1');
 
 		score = 0;
 		enemySpeed = -600;
@@ -38,12 +42,12 @@ Play.prototype = {
 		//this.player.body.immovable = true;
 
 		// Set up player animations
-		this.player.animations.add('walk', [0, 1, 2, 3], 9, true);
-		this.player.animations.add('sprint', [0, 1, 2, 3], 10, true);
-		this.player.animations.add('slow', [0, 1, 2, 3], 8, true);
-
-		// Set up enemy animations
-		//this.enemy.animations.add('float', [0,1,2,3], 5, true);
+		//this.player.animations.add('walk', [0, 1, 2, 3], 9, true);
+		this.player.animations.add('walk', Phaser.Animation.generateFrameNames('Player_Sprite_Idle_F', 1, 4, '', 1), 9, true);
+		//this.player.animations.add('sprint', [0, 1, 2, 3], 10, true);
+		this.player.animations.add('sprint', Phaser.Animation.generateFrameNames('Player_Sprite_Idle_F', 1, 4, '', 1), 10, true);
+		//this.player.animations.add('slow', [0, 1, 2, 3], 8, true);
+		this.player.animations.add('slow', Phaser.Animation.generateFrameNames('Player_Sprite_Idle_F', 1, 4, '', 1), 8, true);
 
 		// Set up enemy group
 		this.enemyGroup = game.add.group()
@@ -52,7 +56,8 @@ Play.prototype = {
 		// Set up ground
 		this.ground = game.add.group();
 		for(let i = 0; i < game.width; i += 16) {
-			var groundTile = game.add.sprite(i, game.height - 16, 'sandtile');
+			//var groundTile = game.add.sprite(i, game.height - 16, 'sandtile');
+			var groundTile = game.add.sprite(i, game.height - 16, 'atlas', 'sandtile');
 			game.physics.enable(groundTile, Phaser.Physics.ARCADE);
 			groundTile.body.immovable = true;
 			groundTile.body.allowGravity = false;
@@ -69,10 +74,12 @@ Play.prototype = {
 		//timer.start();
 
 		// Add enemysprite
-		this.enemy = game.add.sprite(game.width-128, game.height-64,'enemy_atlas', 'Mob_Snake_F1');
+		//this.enemy = game.add.sprite(game.width-128, game.height-64,'enemy_atlas', 'Mob_Snake_F1');
+		this.enemy = game.add.sprite(game.width-128, game.height-64,'atlas', 'Mob_Snake_F1');
 		this.enemy.anchor.set(0.5);
 		// Set up enemy animations
-		this.enemy.animations.add('float', [0,1,2,3], 5, true);
+		//this.enemy.animations.add('float', [0,1,2,3], 5, true);
+		this.enemy.animations.add('float', Phaser.Animation.generateFrameNames('Mob_Snake_F', 1, 4, '', 1), 5, true);
 	},
 	update: function(){
 		score++;
