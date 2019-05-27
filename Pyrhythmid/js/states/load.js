@@ -32,9 +32,9 @@ Load.prototype = {
 		game.load.atlas('atlas', 'atlas.png', 'atlas.json');
 
 		// Load audio assets
-		//game.load.path = 'temp_assets/temp_audio/';
+		game.load.path = 'temp_assets/temp_audio/';
 		//game.load.audio('tink', 'tink.mp3');
-		//game.load.audio('thump', 'thump.mp3');
+		game.load.audio('thump', 'thump.mp3');
 
 		// Load final audio assets
 		game.load.path = 'assets/audio/';

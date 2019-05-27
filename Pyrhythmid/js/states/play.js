@@ -7,7 +7,7 @@ Play.prototype = {
 		//game.background = this.add.tileSprite(0,0, game.width, game.height, 'background');
 
 		//game.bg4 = this.add.tileSprite(0, 0, game.width +200, game.height, 'bg4');
-		game.bg4 = this.add.tileSprite(0, 0, game.width + 200, game.height, 'atlas' 'BG4');
+		game.bg4 = this.add.tileSprite(0, 0, game.width + 200, game.height, 'atlas', 'BG4');
 		//game.bg3 = this.add.tileSprite(0, 0, this.game.cache.getImage('bg3').width, game.height, 'bg3');
 		game.bg3 = this.add.tileSprite(0, 0, 3000, game.height, 'atlas', 'BG3');
 		//game.bg2 = this.add.tileSprite(0, 0, this.game.cache.getImage('bg2').width, game.height, 'bg2');
