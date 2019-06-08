@@ -31,6 +31,9 @@ Load.prototype = {
 
 		game.load.atlas('atlas', 'atlas.png', 'atlas.json');
 
+		game.load.image('titleimg', 'titleimg.png');
+		game.load.atlas('startatlas', 'start_button.png', 'start_button.json');
+
 		// Load audio assets
 		game.load.path = 'temp_assets/temp_audio/';
 		//game.load.audio('tink', 'tink.mp3');
@@ -38,7 +41,13 @@ Load.prototype = {
 
 		// Load final audio assets
 		game.load.path = 'assets/audio/';
-		game.load.audio('pew', 'pew1.wav');
+		game.load.audio('clickAudio', 'click.mp3');
+		game.load.audio('deathAudio', 'death.wav');
+		game.load.audio('gameoverAudio', 'GameOver.mp3');
+		game.load.audio('laserAudio', 'laser.wav');
+		game.load.audio('levelAudio', 'Level.wav');
+		game.load.audio('menuAudio', 'menu.wav');
+		game.load.audio('pewAudio', 'pew1.wav');
 	},
 	create: function() {
 		// Go to Title state

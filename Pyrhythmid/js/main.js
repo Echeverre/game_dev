@@ -17,6 +17,7 @@ var PLAYERVELOCITY = 250;
 var timer;
 var enemySpeed;
 var score;
+var startButton;
 //var GRAVITY = 2600;
 
 window.onload = function(){

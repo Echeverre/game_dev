@@ -136,7 +136,7 @@ Play.prototype = {
 		group.add(enemy); 
 		//this.tink = game.add.audio('tink');
 		//this.tink.play('', 0, 1, false);
-		this.pew = game.add.audio('pew');
+		this.pew = game.add.audio('pewAudio');
 		this.pew.play('', 0, 1, false);
 	},
 	playerCollision: function(player, group) {
