@@ -24,7 +24,8 @@ Play.prototype = {
 		
 		// Add audio
 		//this.tink = game.add.audio('tink');
-		this.thump = game.add.audio('thump');
+		this.deathAudio = game.add.audio('deathAudio');
+		this.levelAudio = game.add.audio('levelAudio');
 
 		// Add player
 		this.player = game.add.sprite(32, game.height/2, 'atlas', 'Player_Sprite_Idle_F1');
@@ -80,6 +81,9 @@ Play.prototype = {
 		// Set up enemy animations
 		//this.enemy.animations.add('float', [0,1,2,3], 5, true);
 		this.enemy.animations.add('float', Phaser.Animation.generateFrameNames('Mob_Snake_F', 1, 4, '', 1), 5, true);
+
+		this.jumping = false;
+		this.jumps = 0;
 	},
 	update: function(){
 		score++;
@@ -98,10 +102,13 @@ Play.prototype = {
 
 		// Player walk
 		//this.player.animations.play('walk');
-		this.player.body.velocity.x = 0;
+		this.player.body.velocity.x = 10;
 
 		// Enemy float
 		this.enemy.animations.play('float');
+
+		//variable for if the character is touching the ground
+		var onTheGround = this.player.body.touching.down;
 
 		if (game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
 			this.player.body.velocity.x += PLAYERVELOCITY;
@@ -115,9 +122,22 @@ Play.prototype = {
 			this.player.animations.play('walk');
 		}
 
-		if (game.input.keyboard.isDown(Phaser.Keyboard.UP) && this.player.body.touching.down) {
-			this.player.body.velocity.y = -1500;
+		
+		console.log(this.jumps);
+
+		if (onTheGround){
+			this.jumps = 2;
 		}
+		
+		if (game.input.keyboard.isDown(Phaser.Keyboard.UP) && this.jumps > 0 && this.jumping == false) {
+			this.player.body.velocity.y = -1500;
+			this.jumping = true;
+			this.jumps--;
+		}
+		else if(!game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
+            this.player.body.velocity.y += 150;
+            this.jumping = false;
+        }
 
 		if(!this.player.destroyed) {
 			game.physics.arcade.collide(this.player, this.enemyGroup, this.playerCollision, null, this);
@@ -142,7 +162,7 @@ Play.prototype = {
 	playerCollision: function(player, group) {
 		this.player.destroyed = true;
 
-		this.thump.play('', 0, 1, false);
+		this.deathAudio.play('', 0, 1, false);
 
 		this.player.kill();
 
